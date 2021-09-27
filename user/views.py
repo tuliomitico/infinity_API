@@ -1,6 +1,5 @@
+import re
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions, status
@@ -12,7 +11,10 @@ class CustomUserCreate(APIView):
     permission_classes = [permissions.AllowAny]
 
     def post(self,request):
-        reg_serializer = RegisterUserSerializer(data=request.data)
+        data = request.data
+        rx = re.compile('[-.]')
+        data['cpf'] = rx.sub(r'',data['cpf'])
+        reg_serializer = RegisterUserSerializer(data=data)
         if reg_serializer.is_valid():
             new_user = reg_serializer.save()
             if new_user:
@@ -23,10 +25,10 @@ class CustomUserView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def patch(self, request, *args, **kwargs):
-        
+
         # userpk = kwargs.get('pk', 0)
         # user = get_object_or_404(request.user, pk=userpk)
-      
+
         serializeddata = UserSerializer(request.user, data=request.data, partial=True)
         if serializeddata.is_valid(raise_exception=True):
             serializeddata.save()

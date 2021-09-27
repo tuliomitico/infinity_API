@@ -24,10 +24,11 @@ decorator @ file:///tmp/build/80754af9/decorator_1621259047763/work
 defusedxml @ file:///tmp/build/80754af9/defusedxml_1615228127516/work
 Deprecated==1.2.13
 Django==3.2.5
+django-cors-headers==3.7.0
 django-js-asset==1.2.2
 django-mptt @ file:///home/conda/feedstock_root/build_artifacts/django-mptt_1631114637768/work
 django-oauth-toolkit==1.5.0
-djangorestframework @ file:///home/conda/feedstock_root/build_artifacts/djangorestframework_1616757768152/work
+djangorestframework==3.12.4
 djangorestframework-simplejwt==4.8.0
 drf-yasg==1.20.0
 idna @ file:///tmp/build/80754af9/idna_1622654382723/work

@@ -1,15 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import re
 from rest_framework import serializers
 from .utils import Utils
 from .exception import ExceptionMessage
 
 
 def cpf_validator(value):
-
-    rx = re.compile("[-.]")
-    value = rx.sub(r'',value)
 
     if len(value) != 11 or len(set(value)) == 1:
         raise serializers.ValidationError(ExceptionMessage().invalid_cpf())
