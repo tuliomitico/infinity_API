@@ -1,3 +1,4 @@
+from store.permissions import StoreOwnerWritePermission
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, permissions
 
@@ -18,12 +19,18 @@ class StoreDetail(generics.RetrieveAPIView):
         item = self.kwargs.get('pk')
         return get_object_or_404(Store,slug=item)
 
+class StoreOwnerDetail(generics.RetrieveAPIView):
+  permission_classes = [permissions.IsAuthenticated]
+  serializer_class = StoreSerializer
+  queryset = Store.objects.all()
 class StoreEdit(generics.UpdateAPIView):
 
+    permission_classes = [StoreOwnerWritePermission]
     queryset = Store.objects.all()
     serializer_class = StoreSerializer
 
 class StoreDelete(generics.DestroyAPIView):
 
-    queryset = Store.objects.all()
-    serializer_class = StoreSerializer
+  permission_classes = [StoreOwnerWritePermission]
+  queryset = Store.objects.all()
+  serializer_class = StoreSerializer

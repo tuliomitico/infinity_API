@@ -36,7 +36,6 @@ urlpatterns = [
     path('',include('store.urls',namespace='store')),
     path('',include('user.urls',namespace='user')),
     # JWT
-    path('login/',TokenObtainPairView.as_view(),name='token_obtain_pair'),
     path('refresh/',TokenRefreshView.as_view(),name='token_refresh'),
     # Swagger
     url(r'^docs/$',schema_view.with_ui('swagger',cache_timeout=0),name='schema_swagger_ui')

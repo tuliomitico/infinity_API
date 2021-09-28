@@ -1,11 +1,19 @@
 import re
-from django.contrib.auth import get_user_model
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions, status
-from .serializers import RegisterUserSerializer, UserSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+from drf_yasg.utils import swagger_auto_schema
+
+from .serializers import RegisterUserSerializer, UserSerializer, MyTokenObtainPairSerializer
+
 
 # Create your views here.
+class MyTokenObtainPairView(TokenObtainPairView):
+  serializer_class = MyTokenObtainPairSerializer
+
+decorated_login_view = swagger_auto_schema(method='post',responses={status.HTTP_201_CREATED: MyTokenObtainPairSerializer})(MyTokenObtainPairView.as_view())
 class CustomUserCreate(APIView):
 
     permission_classes = [permissions.AllowAny]

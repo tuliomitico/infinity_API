@@ -4,4 +4,4 @@ from rest_framework import serializers
 class StoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Store
-        fields = ['id','name','description','slug','logotype','lat','lng','logotype']
+        fields = ['id','name','description','slug','logotype','lat','lng','logotype','category','owner_id']
