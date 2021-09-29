@@ -1,13 +1,13 @@
 from store.permissions import StoreOwnerWritePermission
 from django.shortcuts import get_object_or_404
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, parsers, filters
 
 from .serializers import StoreSerializer
 from .models import Store
 
 # Create your views here.
 class StoreList(generics.ListCreateAPIView):
-
+    parser_classes=[parsers.MultiPartParser,parsers.FormParser]
     queryset = Store.objects.all()
     serializer_class = StoreSerializer
 
@@ -23,6 +23,13 @@ class StoreOwnerDetail(generics.RetrieveAPIView):
   permission_classes = [permissions.IsAuthenticated]
   serializer_class = StoreSerializer
   queryset = Store.objects.all()
+
+class StoreListDetailFilter(generics.ListAPIView):
+
+  queryset = Store.objects.all()
+  serializer_class = StoreSerializer
+  filter_backends = [filters.SearchFilter]
+  search_fields = ['^slug']
 class StoreEdit(generics.UpdateAPIView):
 
     permission_classes = [StoreOwnerWritePermission]
@@ -31,6 +38,6 @@ class StoreEdit(generics.UpdateAPIView):
 
 class StoreDelete(generics.DestroyAPIView):
 
-  permission_classes = [StoreOwnerWritePermission]
+  permission_classes = [permissions.IsAuthenticated]
   queryset = Store.objects.all()
   serializer_class = StoreSerializer
