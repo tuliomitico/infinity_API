@@ -13,3 +13,5 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 DATABASES = {
   'default': env.db()
 }
+
+DROPBOX_OAUTH2_TOKEN = env('DROPBOX_OAUTH2_TOKEN')
