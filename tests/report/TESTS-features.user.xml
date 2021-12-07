@@ -1,0 +1,53 @@
+<testsuite name="features.user.Login e Cadastro" tests="2" errors="1" failures="0" skipped="0" time="0.603347" timestamp="2021-12-07T17:55:23.749409" hostname="MEGAMAQUINA-PC"><testcase classname="features.user.Login e Cadastro" name="Cadastro e Login" status="passed" time="0.343076"><system-out>
+<![CDATA[
+@scenario.begin
+  Cenario: Cadastro e Login
+    Dado username="ana" senha="qwe" cpf="42246244005" telephone="3432107900" email="ana@mail.com" ... passed in 0.208s
+    Quando logar com o usuario "ana" e senha "qwe" ... passed in 0.134s
+    Entao sucesso ... passed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.user.Login e Cadastro" name="Teste Login" status="failed" time="0.260271"><error type="AuthenticationFailed" message="Usuário e/ou senha incorreto(s)">
+<![CDATA[
+Failing step: Entao funciona ... failed in 0.142s
+Location: tests/acceptance/features/user.feature:10
+Traceback (most recent call last):
+  File "D:\tuliofreitas\Documentos\repos\Python\Django\processo-infinity\venv\lib\site-packages\behave\model.py", line 1329, in run
+    match.run(runner.context)
+  File "D:\tuliofreitas\Documentos\repos\Python\Django\processo-infinity\venv\lib\site-packages\behave\matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "tests\acceptance\steps\user.py", line 46, in entao_funciona
+    assert context.serializer.is_valid(raise_exception=True)
+  File "D:\tuliofreitas\Documentos\repos\Python\Django\processo-infinity\venv\lib\site-packages\rest_framework\serializers.py", line 220, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "D:\tuliofreitas\Documentos\repos\Python\Django\processo-infinity\venv\lib\site-packages\rest_framework\serializers.py", line 422, in run_validation
+    value = self.validate(value)
+  File "D:\tuliofreitas\Documentos\repos\Python\Django\processo-infinity\user\serializers.py", line 7, in validate
+    data = super().validate(attrs)
+  File "D:\tuliofreitas\Documentos\repos\Python\Django\processo-infinity\venv\lib\site-packages\rest_framework_simplejwt\serializers.py", line 68, in validate
+    data = super().validate(attrs)
+  File "D:\tuliofreitas\Documentos\repos\Python\Django\processo-infinity\venv\lib\site-packages\rest_framework_simplejwt\serializers.py", line 50, in validate
+    raise exceptions.AuthenticationFailed(
+rest_framework.exceptions.AuthenticationFailed: Usuário e/ou senha incorreto(s)
+
+Captured stdout:
+{'id': 1, 'cpf': '42246244005', 'username': 'Joshua', 'password': 'lnM4DqfZ^R', 'telephone': '001-510-516-3500', 'email': 'edward15@example.com'}
+{'username': 'Joshua', 'password': 'pbkdf2_sha256$260000$97pLf8kkzyDMqP55EwaUPO$a8l0tZKxOs0XfVKU0Tup0Q/hukIdmYNisIeJvDJ6Qm4='}]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+  Cenario: Teste Login
+    Dado a url "/login/" ... passed in 0.119s
+    Entao funciona ... failed in 0.142s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+{'id': 1, 'cpf': '42246244005', 'username': 'Joshua', 'password': 'lnM4DqfZ^R', 'telephone': '001-510-516-3500', 'email': 'edward15@example.com'}
+{'username': 'Joshua', 'password': 'pbkdf2_sha256$260000$97pLf8kkzyDMqP55EwaUPO$a8l0tZKxOs0XfVKU0Tup0Q/hukIdmYNisIeJvDJ6Qm4='}
+
+]]>
+</system-out></testcase></testsuite>

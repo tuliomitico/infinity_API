@@ -14,8 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from django.conf.urls import url
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
@@ -38,7 +37,7 @@ urlpatterns = [
     # JWT
     path('refresh/',TokenRefreshView.as_view(),name='token_refresh'),
     # Swagger
-    url(r'^docs/$',schema_view.with_ui('swagger',cache_timeout=0),name='schema_swagger_ui')
+    re_path(r'^docs/$',schema_view.with_ui('swagger',cache_timeout=0),name='schema_swagger_ui')
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

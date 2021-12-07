@@ -1,0 +1,11 @@
+<testsuite name="features.utils.Docs" tests="1" errors="0" failures="0" skipped="0" time="0.085489" timestamp="2021-12-07T17:55:24.419848" hostname="MEGAMAQUINA-PC"><testcase classname="features.utils.Docs" name="Código de Status" status="passed" time="0.085489"><system-out>
+<![CDATA[
+@scenario.begin
+  Cenario: Código de Status
+    Dado a url da documentacao "/docs/" ... passed in 0.072s
+    Entao retorna sucesso "200" ... passed in 0.014s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

@@ -1,0 +1,11 @@
+<testsuite name="features.django-test-client.Teste do Cliente Django" tests="1" errors="0" failures="0" skipped="0" time="0.091021" timestamp="2021-12-07T17:55:20.985504" hostname="MEGAMAQUINA-PC"><testcase classname="features.django-test-client.Teste do Cliente Django" name="Teste do Cliente Django" status="passed" time="0.091021"><system-out>
+<![CDATA[
+@scenario.begin
+  Cenario: Teste do Cliente Django
+    Quando eu uso o cliente de teste Django para visitar "/admin/" ... passed in 0.090s
+    Entao deve retorna uma resposta de redirecionamento 302 ... passed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

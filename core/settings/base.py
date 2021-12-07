@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'drf_yasg',
+    'behave_django',
     # Local apps
     'user.apps.UserConfig',
     'store.apps.StoreConfig'
@@ -154,7 +155,7 @@ REST_FRAMEWORK = {
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-ALTERNATIVE_DEFAULT_FILE_STORAGE = 'storage.backend.CustomDropBoxStorage'
-DEFAULT_FILE_STORAGE = ALTERNATIVE_DEFAULT_FILE_STORAGE
+# ALTERNATIVE_DEFAULT_FILE_STORAGE = 'storage.backend.CustomDropBoxStorage'
+# DEFAULT_FILE_STORAGE = ALTERNATIVE_DEFAULT_FILE_STORAGE
 
 DROPBOX_OAUTH2_TOKEN = os.getenv('DROPBOX_OAUTH2_TOKEN')
